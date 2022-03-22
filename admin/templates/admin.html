@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en">
+<head> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<meta charset="UTF-8">    
+<meta http-equiv="X-UA-Compatible" content="IE=edge">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>Document</title></head><body> 
+<h1>Admin db hydra</h1>  
+<table class="table">
+    TABLE A FAIRE
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+       
+        
+        <th scope="col">Done</th>
+      </tr>
+    </thead>
+    {% for a in allAF %}
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ a.val() }}</td>
+      
+        <td><form action="/done" method="post">
+        <input name="data" type="hidden" value="{{ a.val( )}}">
+        <input name="lien" type="text" value="" required>
+        <input type="submit" value="Click Me" >
+    </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    
+  </table>
+
+  <table class="table">
+    TABLE Done
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">DELETE</th>
+        
+      </tr>
+    </thead>
+    {% for b in allDone %}
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{ b.val() }}</td>
+        <td>
+          <form action="/delete" method="post">
+            <input name="donecount" type="hidden" value="{{ b.val().donecount}}">
+            <input type="submit" value="Supprimer" >
+          </form>
+       
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    
+  </table>
+</body>
+</html>

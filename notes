@@ -1,0 +1,123 @@
+<br>
+    <br>
+    <br>
+    <br>
+    <div class="container" style="text-align: center;">
+        <div class="row">
+            <div class="col-sm" style="color: white;">
+                test
+            </div>
+
+            <div class="col-sm" style="color: white;">
+                test    
+            </div>
+
+            <div class="col-sm" style="color: white;">
+                test
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    
+
+
+
+
+    if form.is_valid():
+        print("test1")
+        titre=form.cleaned_data.get("title")
+        desc=form.cleaned_data.get("desc")
+        database.child("defis").child("defi1").update({"desc":desc})
+        print('updated desc')
+
+        {% for defi in defis %}
+
+        <footer class="py-2  fixed-bottom mt-auto" style="background-color: #633ccd;">
+            <div class="container">
+    
+                <div class="row">
+                    <div class="col-sm">
+                        <br>
+                        
+                        <a href="#" class="fa fa-facebook" style="color: white;"> </a>
+                        <a style="color: white;">Facebook</a>
+    
+                        <br>
+                        <a href="#" class="fa fa-instagram" style="color: white;"> </a>
+                        <a style="color: white;">Instagram</a>
+    
+                        <br>
+                        <a href="#" class="fa fa-youtube" style="color: white;"> </a>
+                        <a style="color: white;">Youtube</a>
+    
+                        <br>
+                        <a href="#" class="fa fa-snapchat-ghost" style="color: white;"> </a>
+                        <a style="color: white;">Snapchat</a>
+                        <br>
+                        <a href="#" class="fa fa-telegram" style="color: white;"> </a>
+                        <a style="color: white;">Telegram</a>
+                    </div>
+                    <div class="col-sm">
+                        <img src="{{ MEDIA_URL }}petit.jpg" height="" class="rounded">
+                    </div>
+                    <div class="col-sm">
+                      <br>
+                      <a style="color: white;">
+                        Liste Hydra © 2021-2022
+                      </a>
+                      <br>
+                      
+                      <br>
+                      <a style="color: white;">
+                       Contact : listehydra@gmail.com
+                      </a>
+                     
+                    </div>
+                  </div>
+            
+            </div>
+            </footer>
+
+
+
+            config={
+                "apiKey": "AIzaSyAI0KK-ff21JLuLIDhVbBcwfDh63HfoDCY",
+                "authDomain": "site-liste-hydra-e6a25.firebaseapp.com",
+                "projectId": "site-liste-hydra-e6a25",
+                "storageBucket": "site-liste-hydra-e6a25.appspot.com",
+                "messagingSenderId": "809157089116",
+                "appId": "1:809157089116:web:a45f65cdcb6f2aff409399",
+                "measurementId": "G-VQ33YWV56V",
+                "databaseURL" : "https://site-liste-hydra-e6a25-default-rtdb.europe-west1.firebasedatabase.app/"
+              }
+              
+              
+                  
+              
+              def getdbAF():
+                  firebase=pyrebase.initialize_app(config)
+                  authe = firebase.auth()
+                  database=firebase.database()
+                  all_defis = database.child("defis").get()
+                  defilist=[]
+                  for defi in all_defis:
+                      if defi.val()["titre"] != "test":
+                          defilist.append(defi.val())
+                  return all_defis
+              
+              def getdbDone():
+                  firebase=pyrebase.initialize_app(config)
+                  authe = firebase.auth()
+                  database=firebase.database()
+                  all_defis = database.child("done").get()
+                  defilist=[]
+                  for defi in all_defis:
+                      if defi.val()["titre"] != "test":
+                          defilist.append(defi.val())
+                  return all_defis
+              
